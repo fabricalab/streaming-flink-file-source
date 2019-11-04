@@ -12,7 +12,6 @@ import org.apache.flink.core.fs.FileInputSplit;
 import java.io.IOException;
 import java.io.Serializable;
 
-@Getter
 @RequiredArgsConstructor
 public class JsonInputFormat<Pojo> extends FileInputFormat<Pojo> implements Serializable, ResultTypeQueryable {
 
