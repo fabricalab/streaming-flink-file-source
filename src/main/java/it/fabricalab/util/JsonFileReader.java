@@ -8,8 +8,9 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMap
 import java.io.IOException;
 
 public class JsonFileReader {
-
     private static final ObjectMapper mapper = new ObjectMapper().configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+
+    private  JsonFileReader() {}
 
     public static <Pojo> Pojo readFileWithType(final Path path, final Class<Pojo> pojoClass) throws IOException {
         final FileSystem fs = FileSystem.get(path.toUri());

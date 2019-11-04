@@ -2,7 +2,7 @@ language: java
 jdk: "openjdk8"
 
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+  - mvn jacoco:report coveralls:report
 
 notifications:
   slack: fabricalab:UPuOBgojlk1hTI8783gJ8JaV

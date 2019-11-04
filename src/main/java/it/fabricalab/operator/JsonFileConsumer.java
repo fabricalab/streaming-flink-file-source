@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
-@Slf4j
 @RequiredArgsConstructor
 public class JsonFileConsumer<Pojo> {
 
@@ -15,7 +14,7 @@ public class JsonFileConsumer<Pojo> {
     private SingleOutputStreamOperator<Pojo> configurationStream;
 
     public SingleOutputStreamOperator<Pojo> getJsonFileStream(final StreamExecutionEnvironment env) {
-        assert !this.config.getPath().isEmpty() : "Specify the location of the file in FileConsumerConfig object";
+        assert this.config.getPath() != null && !this.config.getPath().isEmpty() : "Specify the location of the file in FileConsumerConfig object";
         if (null == this.configurationStream) {
             final JsonInputFormat<Pojo> inputFormat = new JsonInputFormat<>(this.config.getInputFormatClass());
             this.configurationStream =

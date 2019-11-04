@@ -15,7 +15,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <flink.version>1.8.0</flink.version>
         <scala.binary.version>2.11</scala.binary.version>
-        <junit.version>5.1.0</junit.version>
+        <junit.version>5.5.2</junit.version>
         <mockito.version>3.1.0</mockito.version>
     </properties>
 
@@ -68,6 +68,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
