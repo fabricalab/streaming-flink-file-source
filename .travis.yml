@@ -3,7 +3,7 @@ jdk: "openjdk8"
 
 install: skip
 
-script: mvn clean compile test
+script: mvn clean compile test jacoco:report
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
