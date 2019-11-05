@@ -10,6 +10,6 @@ You must provide a class that represent the content file so that the operator ca
 
 ## TODO
 - Define prerequisites
-- explain how work with this source
+- Explain how work with this source
 ## Disclaimer
 Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of [The Apache Software Foundation](http://apache.org).
