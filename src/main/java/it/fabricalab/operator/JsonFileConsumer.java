@@ -14,7 +14,8 @@ public class JsonFileConsumer<Pojo> {
     private SingleOutputStreamOperator<Pojo> configurationStream;
 
     public SingleOutputStreamOperator<Pojo> getJsonFileStream(final StreamExecutionEnvironment env) {
-        assert this.config.getPath() != null && !this.config.getPath().isEmpty() : "Specify the location of the file in FileConsumerConfig object";
+        if (this.config.getPath() == null || this.config.getPath().isEmpty())
+            throw new AssertionError("You must define a path");
         if (null == this.configurationStream) {
             final JsonInputFormat<Pojo> inputFormat = new JsonInputFormat<>(this.config.getInputFormatClass());
             this.configurationStream =
