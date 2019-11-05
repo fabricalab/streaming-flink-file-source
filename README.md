@@ -8,8 +8,19 @@ This repository contains the source code for a *Source operator* that allow to r
  mutations.
 You must provide a class that represent the content file so that the operator can return a tiped stream.
 
-## TODO
-- Define prerequisites
-- Explain how work with this source
+## Configure the source
+`JsonFileConsumerConfig<Pojo>` allow you to setup the `JsonFileConsumer<Pojo>`, the following code snippet shows how use that class to read ad a file and andling mutation:
+```java
+final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+final JsonFileConsumerConfig<BusinessConfiguration> config = new JsonFileConsumerConfig<>(BusinessConfiguration.class)
+        .setPath("src/test/resources/config/config.json")
+        .setMode(FileProcessingMode.PROCESS_ONCE);
+final JsonFileConsumer<BusinessConfiguration> consumer = new JsonFileConsumer<>(config);
+env.setParallelism(parallelism);
+consumer.getJsonFileStream(env)
+        .addSink(...);
+env.execute();
+```
+For a complete example, [JsonFileConsumerTest](https://github.com/fabricalab/streaming-flink-file-source/blob/master/src/test/java/it/fabricalab/JsonFileConsumerTest.java) contanins unit and integration test that explain how the library works.
 ## Disclaimer
 Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of [The Apache Software Foundation](http://apache.org).
