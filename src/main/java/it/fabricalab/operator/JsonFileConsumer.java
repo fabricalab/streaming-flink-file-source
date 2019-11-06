@@ -21,6 +21,7 @@ public class JsonFileConsumer<Pojo> {
             this.configurationStream =
                     env.readFile(inputFormat, this.config.getPath(), this.config.getMode(), this.config.getInterval())
                             .name(this.config.getOperatorName())
+                            .uid(this.config.getUid())
                             .setParallelism(this.config.getParallelism());
         }
         return this.configurationStream;
