@@ -9,7 +9,7 @@ This repository contains the source code for a *Source operator* that allow to r
 You must provide a class that represent the content file so that the operator can return a tiped stream.
 
 ## Documentation
-All the documentation is available on the [wiki pages](https://github.com/fabricalab/streaming-flink-file-source/wiki).
+All the documentation is available on the [wiki pages](https://github.com/fabricalab/streaming-flink-file-source/wiki/Configure-the-Source-Operator).
 
 ## Disclaimer
 Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of [The Apache Software Foundation](http://apache.org).
