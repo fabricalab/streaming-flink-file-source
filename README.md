@@ -7,5 +7,9 @@
 This repository contains the source code for a *Source operator* that allow to retrieval file content and handling
  mutations.
 You must provide a class that represent the content file so that the operator can return a tiped stream.
+
+## Documentation
+All the documentation is available on the [wiki pages](https://github.com/fabricalab/streaming-flink-file-source/wiki).
+
 ## Disclaimer
 Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of [The Apache Software Foundation](http://apache.org).
