@@ -6,7 +6,7 @@
 
     <groupId>it.fabricalab.streaming</groupId>
     <artifactId>flink-file-source</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <java.version>1.8</java.version>
@@ -18,6 +18,60 @@
         <junit.version>5.5.2</junit.version>
         <mockito.version>3.1.0</mockito.version>
     </properties>
+
+    <!-- Project Information -->
+    <name>Flink File Source</name>
+    <description>File source operator for Apache Flink</description>
+    <url>https://github.com/fabricalab/streaming-flink-file-source</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <organization>
+        <name>Fabricalab</name>
+        <url>https://www.fabricalab.it</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>MarcoAlessandroRiggio</id>
+            <name>Marco Alessandro Riggio</name>
+            <email>marco.riggio1994@gmail.com</email>
+            <url>https://github.com/MarcoAlessandroRiggio</url>
+            <organization>Fabricalab</organization>
+            <organizationUrl>https://www.fabricalab.it</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Rome</timezone>
+        </developer>
+        <developer>
+            <id>pippolino</id>
+            <name>Federico Soldani</name>
+            <email>pippo@daemon-ware.com</email>
+            <url>https://www.daemon-ware.com/</url>
+            <organization>Fabricalab</organization>
+            <organizationUrl>https://www.fabricalab.it</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Rome</timezone>
+        </developer>
+    </developers>
+
+    <!-- Environment Settings -->
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/fabricalab/streaming-flink-file-source/issues</url>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/fabricalab/streaming-flink-file-source</url>
+        <connection>scm:git:git://github.com:fabricalab/streaming-flink-file-source.git</connection>
+        <developerConnection>scm:git:git@github.com:fabricalab/streaming-flink-file-source.git</developerConnection>
+    </scm>
 
     <repositories>
         <repository>
@@ -207,7 +261,15 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
-                        </goals>
+                        </goals>	
+						<configuration>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+							<keyname>${gpg.keyname}</keyname>
+							<passphraseServerId>${gpg.keyname}</passphraseServerId>
+						</configuration>
                     </execution>
                 </executions>
             </plugin>
