@@ -10,3 +10,5 @@ after_success:
 
 notifications:
   slack: fabricalab:UPuOBgojlk1hTI8783gJ8JaV
+    on_success: never
+    on_failure: always
