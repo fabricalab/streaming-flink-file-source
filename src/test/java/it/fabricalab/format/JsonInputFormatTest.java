@@ -1,11 +1,13 @@
-package it.fabricalab;
+package it.fabricalab.format;
 
+import it.fabricalab.BusinessConfiguration;
 import it.fabricalab.config.JsonFileConsumerConfig;
 import it.fabricalab.operator.JsonFileConsumer;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.functions.source.FileProcessingMode;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,9 +20,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class JsonFileConsumerTest {
+class JsonInputFormatTest {
     private final static int parallelism = 1;
-    private CollectSink sink = new CollectSink();
+    private CollectSink sink;
+
+    @BeforeEach
+    void setUp() {
+        this.sink = new CollectSink();
+    }
 
     @Test
     @DisplayName("Reading a file from path..")
@@ -28,7 +35,7 @@ class JsonFileConsumerTest {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         final JsonFileConsumerConfig<BusinessConfiguration> config = new JsonFileConsumerConfig<>(BusinessConfiguration.class)
-                .setPath("src/test/resources/config/config.json")
+                .setPath("src/test/resources/config/")
                 .setMode(FileProcessingMode.PROCESS_ONCE);
         final JsonFileConsumer<BusinessConfiguration> consumer = new JsonFileConsumer<>(config);
 
@@ -71,6 +78,19 @@ class JsonFileConsumerTest {
             new JsonFileConsumer<>(config)
                     .getJsonFileStream(env);
         });
+    }
+
+    @Test
+    @DisplayName("Check the operator not throw exception in something went wrong..")
+    void checkException() throws Exception {
+        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        final JsonFileConsumerConfig<BusinessConfiguration> config = new JsonFileConsumerConfig<>(BusinessConfiguration.class)
+                .setPath("src/test/resources/config/wrongConfig.json")
+                .setMode(FileProcessingMode.PROCESS_ONCE);
+        new JsonFileConsumer<>(config)
+                .getJsonFileStream(env);
+        env.setParallelism(parallelism);
+        env.execute();
     }
 
     static class CollectSink implements SinkFunction<BusinessConfiguration> {

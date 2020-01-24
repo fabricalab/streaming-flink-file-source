@@ -1,0 +1,15 @@
+{
+  "primitive": 12,
+  "collection": [
+    "First String",
+    "Second String"
+  ],
+  "object": {
+    "primitive": 12,
+    "collection": [
+      "First String",
+      "Second String"
+    ]
+  },
+  "strangeProperty": "ops"
+}

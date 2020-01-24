@@ -1,19 +1,21 @@
 package it.fabricalab.format;
 
 import it.fabricalab.util.JsonFileReader;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.io.FileInputFormat;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.typeutils.GenericTypeInfo;
 import org.apache.flink.api.java.typeutils.ResultTypeQueryable;
 import org.apache.flink.core.fs.FileInputSplit;
+import org.apache.flink.core.fs.Path;
 
 import java.io.IOException;
 import java.io.Serializable;
 
+@Slf4j
 @RequiredArgsConstructor
-public class JsonInputFormat<Pojo> extends FileInputFormat<Pojo> implements Serializable, ResultTypeQueryable {
+public class JsonInputFormat<Pojo> extends FileInputFormat<Pojo> implements Serializable, ResultTypeQueryable<Pojo> {
 
     private Pojo element;
     private boolean sent = false;
@@ -23,7 +25,8 @@ public class JsonInputFormat<Pojo> extends FileInputFormat<Pojo> implements Seri
     public void open(FileInputSplit fileSplit) throws IOException {
         super.open(fileSplit);
         this.sent = false;
-        this.element = JsonFileReader.readFileWithType(fileSplit.getPath(), this.pojoClass);
+        final Path path = fileSplit.getPath();
+        this.element = JsonFileReader.readFileWithType(path, this.pojoClass);
     }
 
     @Override

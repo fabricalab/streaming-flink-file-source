@@ -11,7 +11,7 @@ import java.util.Collection;
 @Getter
 @NoArgsConstructor
 @ToString
-class BusinessConfiguration implements Serializable {
+public class BusinessConfiguration implements Serializable {
     private static final long serialVersionUID = 786117322081236448L;
 
     private int primitive = 0;
