@@ -18,7 +18,7 @@ If you are using Maven you can add the flink-file-source by adding the following
 <dependency>
   <groupId>it.fabricalab.streaming</groupId>
   <artifactId>flink-file-source</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
