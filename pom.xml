@@ -6,7 +6,7 @@
 
     <groupId>it.fabricalab.streaming</groupId>
     <artifactId>flink-file-source</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <properties>
         <java.version>1.8</java.version>
