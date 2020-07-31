@@ -33,7 +33,6 @@ class JsonInputFormatTest {
     @DisplayName("Reading a file from path..")
     void readFile() throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-
         final JsonFileConsumerConfig<BusinessConfiguration> config = new JsonFileConsumerConfig<>(BusinessConfiguration.class)
                 .setPath("src/test/resources/config/")
                 .setMode(FileProcessingMode.PROCESS_ONCE);

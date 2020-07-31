@@ -8,6 +8,10 @@ script: mvn clean compile test jacoco:report
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+cache:
+  directories:
+    - $HOME/.m2
+sudo: false
 branches:
   only:
     - master
@@ -20,6 +24,5 @@ notifications:
     on_pull_requests: always
     on_success: never # default: always
     on_failure: always # default: always
-    on_start:   change # default: never
     on_cancel:  always # default: always
     on_error:   always # default: always

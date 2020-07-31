@@ -73,6 +73,7 @@ class JsonFileConsumerTest {
         });
     }
 
+
     static class CollectSink implements SinkFunction<BusinessConfiguration> {
         private static final long serialVersionUID = -4819511717828201186L;
 
