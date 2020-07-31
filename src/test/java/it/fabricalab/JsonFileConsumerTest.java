@@ -73,11 +73,6 @@ class JsonFileConsumerTest {
         });
     }
 
-    @Test
-    void failTest() {
-        // Just fail a test for check the notification on the teams channel
-        assertEquals(0, 1);
-    }
 
     static class CollectSink implements SinkFunction<BusinessConfiguration> {
         private static final long serialVersionUID = -4819511717828201186L;
