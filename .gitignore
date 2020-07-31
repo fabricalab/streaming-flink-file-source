@@ -25,3 +25,5 @@ hs_err_pid*
 .idea
 flink-file-source.iml
 target
+
+dependency-reduced-pom.xml
