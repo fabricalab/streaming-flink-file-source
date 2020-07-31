@@ -8,7 +8,18 @@ script: mvn clean compile test jacoco:report
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+branches:
+  only:
+    - master
+    - develop
+
 notifications:
-  slack: fabricalab:UPuOBgojlk1hTI8783gJ8JaV
-    on_success: never
-    on_failure: always
+  webhooks:
+    urls:
+      - https://outlook.office.com/webhook/56c4a7c3-6031-43ee-b523-4d46338a205c@68555557-d6dd-4dc9-bb68-671f0df0700b/TravisCI/180c796acb904bc782c9270e5d5cf1ef/67212762-0dce-4706-b5b5-e932be10893b
+    on_pull_requests: always
+    on_success: never # default: always
+    on_failure: always # default: always
+    on_start:   change # default: never
+    on_cancel:  always # default: always
+    on_error:   always # default: always

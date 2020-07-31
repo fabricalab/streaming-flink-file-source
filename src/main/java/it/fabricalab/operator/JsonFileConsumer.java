@@ -3,7 +3,6 @@ package it.fabricalab.operator;
 import it.fabricalab.config.JsonFileConsumerConfig;
 import it.fabricalab.format.JsonInputFormat;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

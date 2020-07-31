@@ -17,9 +17,9 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public class JsonInputFormat<Pojo> extends FileInputFormat<Pojo> implements Serializable, ResultTypeQueryable<Pojo> {
 
+    private final Class<Pojo> pojoClass;
     private Pojo element;
     private boolean sent = false;
-    private final Class<Pojo> pojoClass;
 
     @Override
     public void open(FileInputSplit fileSplit) throws IOException {
